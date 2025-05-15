@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>쿠팡 로그인</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: #0074e4;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0074e4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    .extra-links {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .extra-links a {
+      color: #0074e4;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">Coupang</div>
+    <input type="text" placeholder="아이디(이메일 또는 전화번호)">
+    <input type="password" placeholder="비밀번호">
+    <button>로그인</button>
+    <div class="extra-links">
+      <a href="#">아이디 찾기</a> |
+      <a href="#">비밀번호 찾기</a> |
+      <a href="#">회원가입</a>
+    </div>
+  </div>
+</body>
+</html>
