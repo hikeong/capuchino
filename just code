@@ -1,0 +1,103 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    srand(time(0));
+
+    char board[6][6];
+    char real[6][6];
+    int mines = 4;
+    int count = 0;
+
+    
+    for (int i1 = 0; i1 < 6; i1++) {
+        for (int j2 = 0; j2 < 6; j2++) {
+            board[i1][j2] = '_';
+            real[i1][j2] = '0';
+        }
+    }
+
+   
+    int m = 0;
+    while (m < mines) {
+        int x = rand() % 6;
+        int y = rand() % 6;
+        if (real[x][y] != '*') {
+            real[x][y] = '*';
+            m++;
+        }
+    }
+
+    int opened = 0;
+    while (true) {
+       
+        cout << "  0 1 2 3 4 5" << endl;
+        for (int i = 0; i < 6; i++) {
+            cout << i << " ";
+            for (int j = 0; j < 6; j++) {
+                cout << board[i][j] << " ";
+            }
+            cout << endl;
+        }
+
+        int x, y;
+        cout << "좌표 입력 (x y): ";
+        cin >> x >> y;
+
+        if (x < 0 || x >= 6 || y < 0 || y >= 6) {
+            cout << "잘못된 입력입니다 다시 시도해주세요\n";
+            continue;
+        }
+
+        if (board[x][y] != '_') {
+            cout << "여긴 이미 열었습니다\n";
+            continue;
+        }
+
+        if (real[x][y] == '*') {
+            cout << "앗 지뢰를 밟았다!\n";
+            break;
+        }
+
+        
+        int c = 0;
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                int nx = x + dx;
+                int ny = y + dy;
+                if (nx >= 0 && nx < 6 && ny >= 0 && ny < 6) {
+                    if (real[nx][ny] == '*') {
+                        c++;
+                    }
+                }
+            }
+        }
+
+        board[x][y] = '0' + c;
+        opened++;
+
+        if (opened == 36 - mines) {
+            cout << "축하드립니다 전부 여셨네요!\n";
+            break;
+        }
+    }
+
+    
+    cout << "\n지뢰 위치:\n";
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            cout << real[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    
+    cout << "엔터를 눌러 종료";
+    cin.ignore();
+    cin.get();
+
+    return 0;
+}
